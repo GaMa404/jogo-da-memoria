@@ -78,7 +78,7 @@ function resetCards()
     cards.forEach(card => {
         /* Gera um número aleatório entre 0 e 3 usando Math.random() que retorna um número
         entre 0 e 1, multiplado por 4 e arredondado para o menor inteiro pelo Math.floor()*/  
-        let randomPos = Math.floor(Math.random() * 4);
+        let randomPos = Math.floor(Math.random() * 18);
 
         /* Define a nova posição da carta com o valor aleatório de randomPos utilizando a propriedade order de flex-items, 
         uma vez que o container é declarado "display: flex;" */
