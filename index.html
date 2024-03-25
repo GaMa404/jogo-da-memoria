@@ -1,26 +1,107 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da memória</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css" class="css">
 </head>
 <body>
     <div class="container">
-        <img id="carta1" class="carta" onclick="validarClick('carta1')" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX3WwbrZzLGs8yLKa9kKP-RVyek91EyzBDS4ovmTXNcA&s">
-        <img id="carta2" class="carta" onclick="validarClick('carta2')" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX3WwbrZzLGs8yLKa9kKP-RVyek91EyzBDS4ovmTXNcA&s">
-        <img id="carta3" class="carta" onclick="validarClick('carta3')" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX3WwbrZzLGs8yLKa9kKP-RVyek91EyzBDS4ovmTXNcA&s">
-        <img id="carta4" class="carta" onclick="validarClick('carta4')" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX3WwbrZzLGs8yLKa9kKP-RVyek91EyzBDS4ovmTXNcA&s">
-        <img id="carta5" class="carta" onclick="validarClick('carta5')" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX3WwbrZzLGs8yLKa9kKP-RVyek91EyzBDS4ovmTXNcA&s">
 
-        <img id="carta6" class="carta" onclick="validarClick('carta6')" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX3WwbrZzLGs8yLKa9kKP-RVyek91EyzBDS4ovmTXNcA&s">
-        <img id="carta7" class="carta" onclick="validarClick('carta7')" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX3WwbrZzLGs8yLKa9kKP-RVyek91EyzBDS4ovmTXNcA&s">
-        <img id="carta8" class="carta" onclick="validarClick('carta8')" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX3WwbrZzLGs8yLKa9kKP-RVyek91EyzBDS4ovmTXNcA&s">
-        <img id="carta9" class="carta" onclick="validarClick('carta9')" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX3WwbrZzLGs8yLKa9kKP-RVyek91EyzBDS4ovmTXNcA&s">
-        <img id="carta10" class="carta" onclick="validarClick('carta10')" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX3WwbrZzLGs8yLKa9kKP-RVyek91EyzBDS4ovmTXNcA&s">
-    </div>    
+        <!-- data-* -> serve para inserir informações adicionais ao elemento, o asterisco pode ser qualquer palavra, nesse caso: data-info -->
+        <div class="card" data-info="dudu">
+            <img class="front-face" src="image/dudu.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="dudu">
+            <img class="front-face" src="image/dudu.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="veiga">
+            <img class="front-face" src="image/veiga.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="veiga">
+            <img class="front-face" src="image/veiga.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="endrick">
+            <img class="front-face" src="image/endrick.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="endrick">
+            <img class="front-face" src="image/endrick.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="gustavo_gomez">
+            <img class="front-face" src="image/gustavo_gomez.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="gustavo_gomez">
+            <img class="front-face" src="image/gustavo_gomez.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="piquerez">
+            <img class="front-face" src="image/piquerez.png">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="piquerez">
+            <img class="front-face" src="image/piquerez.png">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="ze_rafael">
+            <img class="front-face" src="image/ze_rafael.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="ze_rafael">
+            <img class="front-face" src="image/ze_rafael.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="murilo">
+            <img class="front-face" src="image/murilo.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="murilo">
+            <img class="front-face" src="image/murilo.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="flaco_lopez">
+            <img class="front-face" src="image/flaco_lopez.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="flaco_lopez">
+            <img class="front-face" src="image/flaco_lopez.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="weverton">
+            <img class="front-face" src="image/weverton.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+
+        <div class="card" data-info="weverton">
+            <img class="front-face" src="image/weverton.jpg">
+            <img class="back-face" src="image/palmeiras.png">
+        </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>

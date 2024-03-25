@@ -1,77 +1,100 @@
-let click1 = false;
-let click2 = false;
+const cards = document.querySelectorAll(".card");
 
-let carta1;
-let carta2;
+let hasClicked = false;
+let firstCard, secondCard;
+let blockCards = false;
 
-let i = 0;
-
-function virarCarta(selected)
+function flipCard()
 {
-    let elemento = selected;
-    elemento.classList.toggle('flip')
-}
+    //Se a condição for verdadeira, a função retorna imediatamente, sem executar mais nada.
+    if (blockCards) return;
 
-function validarClick(carta)
-{
-    let elemento = document.getElementById(carta);
+    //Se a variável firstCard for igual ao objeto referenciado no momento, significa que o usuário clicou duas vezes na mesma carta
+    if (this === firstCard) return;
 
-    console.log(elemento)
+    this.classList.add('flip');
 
-    setTimeout(validarCartas, 1000);
-
-    if (!click1 && !click2)
+    if(!hasClicked)
     {
-        virarCarta(elemento);
-        click1 = true;
-        carta1 = elemento; 
+        hasClicked = true;
+        // firstCard recebe o valor do objeto atual
+        firstCard = this;
+        console.log("Carta1 -> ", firstCard);
+        return;
     }
-    else if (click1 && !click2 && carta1 != elemento)
-    {   
-        virarCarta(elemento);
-        click2 = true;
-        carta2 = elemento;
-    }
+    
+    secondCard = this;
+    blockCards = true;
+
+    console.log("Carta2 -> ", secondCard);
+
+    checkCards();
 }
 
-function resetarCartas()
+function checkCards()
 {
-    if (carta1 != null && carta2 != null)
-    {
-        virarCarta(carta1);
-        virarCarta(carta2);
-        click1 = false;
-        click2 = false;
-        carta1 = null;
-        carta2 = null;
-    }
+    // pega o valor do "data-info" presente no html e confere para ver se firstCard e secondCard possuem o mesmo valor
+    // se sim (isMatch será true), desabilita as cartas, pois o usuário acertou
+
+    let isMatch = firstCard.dataset.info === secondCard.dataset.info;
+    isMatch ? disableCards() : unflipCards();
+    // Caso não tenha acertado, as cartas voltam à posição original
 }
 
-function validarCartas()
+// Em caso de acerto, desabilita as cartas de mesmo valor
+function disableCards()
 {
-    if (carta1 != null && carta2 != null)
-    {
-        if(carta1.src == carta2.src)
-        {       
-            console.log("carta1", carta1);
-            console.log("carta2", carta2);
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
 
-            carta1.onclick = null;
-            carta2.onclick = null;
-
-            click1 = false;
-            click2 = false;
-            carta1 = null;
-            carta2 = null;
-
-            i++;
-
-            console.log(i);
-
-            if (i == 5)
-                window.alert("Parabéns, você ganhou!");
-        }
-        else
-            resetarCartas();
-    }
+    resetCards();
 }
+
+function unflipCards()
+{
+    // Bloqueia todas as cartas até que a função checkCards() valide o acerto
+    blockCards = true;
+
+    // Faz as cartas voltarem a posição original
+    setTimeout(() => 
+    {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+
+        resetCards();
+    }, 1000);
+}
+
+// Reseta todas as variáveis a cada nova rodada 
+function resetCards()
+{
+    // formato "destructuring assignment", que permite a manipulação de objetos de forma mais precisa, simplificando o código e tornando-o mais legível
+    [hasClicked, blockCards] = [false, false];
+    [firstCard, secondCard] = [null, null];
+}
+
+// Função para embaralhar todas as cartas
+(function shuffle() {
+    cards.forEach(card => {
+        /* Gera um número aleatório entre 0 e 3 usando Math.random() que retorna um número
+        entre 0 e 1, multiplado por 4 e arredondado para o menor inteiro pelo Math.floor()*/  
+        let randomPos = Math.floor(Math.random() * 4);
+
+        /* Define a nova posição da carta com o valor aleatório de randomPos utilizando a propriedade order de flex-items, 
+        uma vez que o container é declarado "display: flex;" */
+        card.style.order = randomPos;
+    });
+})();
+
+/* a função shuffle utiliza o método IIFE (Immediately Invoked Function Expression), 
+ou seja  é executada imediatamente após ser definida, exemplo:
+
+(function my function ()
+{
+    let variable;
+})();
+
+*/
+
+cards.forEach(card => card.addEventListener('click', flipCard));
+
