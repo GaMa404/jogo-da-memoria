@@ -4,9 +4,16 @@ body {
     background-color: black;  
 }
 
+.title-game
+{
+    color: white;
+    text-align: center;
+    padding-top: 5vh;
+}
+
 .container
 {
-    margin-top: 20vh;
+    margin-top: 10vh;
     height: 50vh;
     display: flex;
     justify-content: center;
