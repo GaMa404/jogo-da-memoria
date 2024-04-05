@@ -4,6 +4,8 @@ let hasClicked = false;
 let firstCard, secondCard;
 let blockCards = false;
 
+let points = 0;
+
 function flipCard()
 {
     //Se a condição for verdadeira, a função retorna imediatamente, sem executar mais nada.
@@ -19,14 +21,11 @@ function flipCard()
         hasClicked = true;
         // firstCard recebe o valor do objeto atual
         firstCard = this;
-        console.log("Carta1 -> ", firstCard);
         return;
     }
     
     secondCard = this;
     blockCards = true;
-
-    console.log("Carta2 -> ", secondCard);
 
     checkCards();
 }
@@ -46,6 +45,15 @@ function disableCards()
 {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
+
+    points++;
+
+    setTimeout(() =>
+    {
+        checkPoints();
+    }, 500);
+    
+    //checkPoints();
 
     resetCards();
 }
@@ -87,14 +95,20 @@ function resetCards()
 })();
 
 /* a função shuffle utiliza o método IIFE (Immediately Invoked Function Expression), 
-ou seja  é executada imediatamente após ser definida, exemplo:
+ou seja  é executada imediatamente após ser definida, exemplo: */
 
-(function my function ()
+// verificando se a pontuação foi alcançada, se sim, o jogo acaba
+function checkPoints()
 {
-    let variable;
-})();
+    if (points == 9)
+    {
+        alert("Parabéns, você ganhou!");
+        points = 0;
 
-*/
+        location.reload();
+    }
+     
+}
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
